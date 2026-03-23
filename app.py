@@ -14,28 +14,93 @@ st.markdown("""
 .stat-card {background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 15px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
 
 /* 弹窗样式 */
-.popup-overlay {position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); z-index: 99999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(8px);}
-.popup-box {background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%); color: white; padding: 40px 50px; border-radius: 20px; box-shadow: 0 0 60px rgba(255,0,0,0.7); width: 520px; text-align: center; border: 5px solid #ffcc00; animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative;}
-@keyframes popIn {from { opacity: 0; transform: scale(0.7) translateY(30px); } to { opacity: 1; transform: scale(1) translateY(0); }}
-.popup-title {font-size: 38px; font-weight: bold; margin: 0 0 20px 0; color: #ffcc00; text-shadow: 3px 3px 6px rgba(0,0,0,0.5);}
-.popup-content {font-size: 24px; line-height: 1.7; margin: 25px 0; font-weight: 600;}
-.popup-footer {font-size: 20px; color: #fff; margin-top: 20px; font-weight: bold;}
-.countdown-badge {display: inline-block; background: rgba(255,255,255,0.25); padding: 10px 25px; border-radius: 25px; font-size: 18px; margin-top: 25px; font-weight: bold; border: 2px solid rgba(255,255,255,0.3);}
-.popup-icon {font-size: 80px; margin-bottom: 15px; animation: pulse 1s infinite;}
-@keyframes pulse {0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); }}
+.popup-overlay {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100vw; 
+    height: 100vh; 
+    background: rgba(0,0,0,0.85); 
+    z-index: 99999; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    backdrop-filter: blur(8px);
+}
+.popup-box {
+    background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%); 
+    color: white; 
+    padding: 40px 50px; 
+    border-radius: 20px; 
+    box-shadow: 0 0 60px rgba(255,0,0,0.7); 
+    width: 520px; 
+    text-align: center; 
+    border: 5px solid #ffcc00; 
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    position: relative;
+}
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.7) translateY(30px); } 
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.popup-title {
+    font-size: 38px; 
+    font-weight: bold; 
+    margin: 0 0 20px 0; 
+    color: #ffcc00; 
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+}
+.popup-content {
+    font-size: 24px; 
+    line-height: 1.7; 
+    margin: 25px 0; 
+    font-weight: 600;
+    text-align: left;
+    background: rgba(255,255,255,0.95);
+    color: #333;
+    padding: 25px;
+    border-radius: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+.popup-footer {
+    font-size: 20px; 
+    color: #fff; 
+    margin-top: 20px; 
+    font-weight: bold;
+}
+.countdown-badge {
+    display: inline-block; 
+    background: rgba(255,255,255,0.25); 
+    padding: 10px 25px; 
+    border-radius: 25px; 
+    font-size: 18px; 
+    margin-top: 25px; 
+    font-weight: bold; 
+    border: 2px solid rgba(255,255,255,0.3);
+}
+.popup-icon {
+    font-size: 80px; 
+    margin-bottom: 15px; 
+    animation: pulse 1s infinite;
+}
+@keyframes pulse {
+    0%, 100% { transform: scale(1); } 
+    50% { transform: scale(1.1); }
+}
 
-/* ✅ 叉号关闭按钮样式 */
+/* 叉号关闭按钮 */
 .close-btn {
     position: absolute;
     top: 15px;
     right: 15px;
-    width: 40px;
-    height: 40px;
-    background: rgba(255,255,255,0.3);
-    border: 2px solid rgba(255,255,255,0.5);
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.9);
+    border: none;
     border-radius: 50%;
-    color: white;
-    font-size: 24px;
+    color: #cc0000;
+    font-size: 28px;
     font-weight: bold;
     cursor: pointer;
     display: flex;
@@ -43,14 +108,25 @@ st.markdown("""
     justify-content: center;
     transition: all 0.3s ease;
     line-height: 1;
+    z-index: 100;
 }
 .close-btn:hover {
-    background: rgba(255,255,255,0.9);
-    color: #cc0000;
-    transform: scale(1.1);
+    background: white;
+    transform: scale(1.15);
+    box-shadow: 0 0 15px rgba(255,255,255,0.8);
 }
 
-.ad-banner {background: linear-gradient(90deg, #ff9966, #ff5e62); color: white; padding: 15px; border-radius: 10px; text-align: center; font-size: 18px; font-weight: bold; margin: 10px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.2);}
+.ad-banner {
+    background: linear-gradient(90deg, #ff9966, #ff5e62); 
+    color: white; 
+    padding: 15px; 
+    border-radius: 10px; 
+    text-align: center; 
+    font-size: 18px; 
+    font-weight: bold; 
+    margin: 10px 0; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -71,13 +147,11 @@ if "popup_remaining" not in st.session_state:
     st.session_state.popup_remaining = 0
 if "ad_index" not in st.session_state:
     st.session_state.ad_index = 0
-if "popup_id" not in st.session_state:
-    st.session_state.popup_id = 0
 
 role = "老年人"
 guardian = "138****1234"
 
-# --- 弹窗渲染（纯前端关闭）---
+# --- ✅ 弹窗渲染函数（修复版）---
 popup_placeholder = st.empty()
 
 def render_popup():
@@ -85,43 +159,78 @@ def render_popup():
         popup_placeholder.empty()
         return
     
-    escaped_message = st.session_state.popup_message.replace('"', '&quot;').replace("'", "&#39;").replace('\n', '<br>')
-    popup_id = st.session_state.popup_id
+    # ✅ 直接处理内容，不转义 HTML 标签
+    content_lines = st.session_state.popup_message.split('\n')
+    content_html = '<br>'.join([f'<div>{line}</div>' for line in content_lines if line.strip()])
     
-    # ✅ 纯 HTML + JavaScript，叉号点击直接隐藏弹窗
+    # ✅ 使用完整的 HTML + JS，确保叉号能关闭
     popup_html = f'''
-    <div class="popup-overlay" id="popup-overlay-{popup_id}">
+    <div id="risk-popup-overlay" class="popup-overlay">
         <div class="popup-box">
-            <!-- ✅ 叉号关闭按钮 -->
-            <button class="close-btn" onclick="document.getElementById('popup-overlay-{popup_id}').style.display='none'">×</button>
+            <!-- 叉号按钮 -->
+            <button class="close-btn" onclick="closeRiskPopup()">×</button>
             
             <div class="popup-icon">🚨</div>
             <h2 class="popup-title">反诈预警</h2>
-            <div class="popup-content">{escaped_message}</div>
-            <div class="popup-footer">⛔ 请立即停止任何转账操作！<br>如有疑问请联系监护人！</div>
-            <div class="countdown-badge" id="countdown-{popup_id}">⏱️ 窗口将在 {st.session_state.popup_remaining} 秒后自动关闭</div>
+            <div class="popup-content">
+                {content_html}
+            </div>
+            <div class="popup-footer">
+                 请立即停止任何转账操作！<br>
+                如有疑问请联系监护人！
+            </div>
+            <div class="countdown-badge" id="countdown-timer">
+                ⏱️ 窗口将在 {st.session_state.popup_remaining} 秒后自动关闭
+            </div>
         </div>
     </div>
+    
     <script>
-        var seconds = {st.session_state.popup_remaining};
-        var countdownEl = document.getElementById("countdown-{popup_id}");
-        var popupEl = document.getElementById("popup-overlay-{popup_id}");
-        var timer = setInterval(function() {{
-            seconds--;
-            if (seconds <= 0) {{
-                clearInterval(timer);
-                if (popupEl) popupEl.style.display = 'none';
-            }} else {{
-                countdownEl.innerHTML = "⏱️ 窗口将在 " + seconds + " 秒后自动关闭";
+        // 关闭弹窗函数
+        function closeRiskPopup() {{
+            var popup = document.getElementById("risk-popup-overlay");
+            if (popup) {{
+                popup.style.display = "none";
             }}
-        }}, 1000);
+            // 通知 Streamlit 弹窗已关闭（可选）
+            if (window.parent) {{
+                window.parent.postMessage({{type: "popup_closed"}}, "*");
+            }}
+        }}
+        
+        // 倒计时自动关闭
+        var seconds = {st.session_state.popup_remaining};
+        var countdownEl = document.getElementById("countdown-timer");
+        var popupEl = document.getElementById("risk-popup-overlay");
+        
+        if (countdownEl && popupEl) {{
+            var timer = setInterval(function() {{
+                seconds--;
+                if (seconds <= 0) {{
+                    clearInterval(timer);
+                    popupEl.style.display = "none";
+                }} else {{
+                    countdownEl.innerHTML = "⏱️ 窗口将在 " + seconds + " 秒后自动关闭";
+                }}
+            }}, 1000);
+        }}
+        
+        // 点击遮罩层也可以关闭
+        if (popupEl) {{
+            popupEl.addEventListener('click', function(e) {{
+                if (e.target === popupEl) {{
+                    closeRiskPopup();
+                }}
+            }});
+        }}
     </script>
     '''
+    
     popup_placeholder.markdown(popup_html, unsafe_allow_html=True)
 
 # --- 广告轮播 ---
 ad_messages = [
-    " 反诈小贴士：陌生来电要警惕，可疑链接莫点击！转账汇款先核实，守护您的钱袋子！",
+    "📢 反诈小贴士：陌生来电要警惕，可疑链接莫点击！转账汇款先核实，守护您的钱袋子！",
     "📢 防骗口诀：不轻信、不透露、不转账，遇事先问家人或警察！",
     "📢 温馨提示：公检法不会电话办案，更不会索要银行卡信息！",
     "📢 紧急提醒：网络刷单、虚假投资都是诈骗，天上不会掉馅饼！"
@@ -150,7 +259,7 @@ with st.sidebar:
     st.toggle("开启监护人联动", value=True, key="guardian_linkage")
     st.markdown("---")
     st.markdown("### 📊 实时监测状态")
-    status_color = "🟢" if st.session_state.risk_level == "安全" else ""
+    status_color = "🟢" if st.session_state.risk_level == "安全" else "🔴"
     st.metric("当前风险等级", f"{status_color} {st.session_state.risk_level}")
     st.markdown("---")
     st.markdown("### 📈 今日统计")
@@ -179,7 +288,7 @@ with col1:
 with col2:
     st.markdown(f'<div class="stat-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"><h3>📊 今日检测</h3><div style="font-size: 24px; font-weight: bold;">{st.session_state.safe_count + st.session_state.risk_count} 次</div></div>', unsafe_allow_html=True)
 with col3:
-    st.markdown(f'<div class="stat-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"><h3> 监护人</h3><div style="font-size: 20px; font-weight: bold;">{guardian}</div></div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="stat-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"><h3>👥 监护人</h3><div style="font-size: 20px; font-weight: bold;">{guardian}</div></div>', unsafe_allow_html=True)
 
 st.markdown("---")
 
@@ -215,7 +324,7 @@ if prompt or uploaded_img or uploaded_audio:
         if uploaded_img:
             st.image(uploaded_img, width=300, caption="📷 上传的图片")
         if uploaded_audio:
-            st.audio(uploaded_audio, caption=" 上传的语音")
+            st.audio(uploaded_audio, caption="🎤 上传的语音")
     user_content = prompt if prompt else "发送了一个附件"
     st.session_state.messages.append({"role": "user", "content": user_content, "image": uploaded_img, "audio": uploaded_audio})
     with st.chat_message("assistant"):
@@ -231,7 +340,7 @@ if prompt or uploaded_img or uploaded_audio:
         risk_class_name = "risk-high" if risk_level == "高风险" else ("risk-medium" if risk_level == "中风险" else "risk-safe")
         message_placeholder.markdown(f'<div class="{risk_class_name}">{risk_content}</div>', unsafe_allow_html=True)
         if risk_level == "高风险":
-            st.error("⚠️ 高风险预警！已自动通知监护人。")
+            st.error("️ 高风险预警！已自动通知监护人。")
             if st.session_state.get("guardian_linkage", True):
                 st.info(f"📩 已发送预警短信至监护人：{guardian}")
             st.session_state.risk_count += 1
@@ -239,7 +348,6 @@ if prompt or uploaded_img or uploaded_audio:
                 st.session_state.show_popup = True
                 st.session_state.popup_message = popup_msg
                 st.session_state.popup_remaining = 5
-                st.session_state.popup_id += 1  # 每次新弹窗 ID+1，避免冲突
                 st.rerun()
         elif risk_level == "中风险":
             st.warning("⚠️ 中风险提醒！请谨慎操作。")
